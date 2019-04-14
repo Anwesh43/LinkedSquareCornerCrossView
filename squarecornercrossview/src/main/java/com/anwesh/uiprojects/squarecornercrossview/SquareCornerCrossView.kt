@@ -174,4 +174,28 @@ class SquareCornerCrossView(ctx : Context) : View(ctx) {
             return this
         }
     }
+
+    data class SquareCornerCross(var i : Int) {
+
+        private val root : SCCNode = SCCNode(0)
+        private var curr : SCCNode = root
+        private var dir : Int = 1
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            root.draw(canvas, paint)
+        }
+
+        fun update(cb : (Int, Float) -> Unit) {
+            curr.update {i, scl ->
+                curr = curr.getNext(dir) {
+                    dir *= -1
+                }
+                cb(i, scl)
+            }
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            curr.startUpdating(cb)
+        }
+    }
 }
