@@ -57,6 +57,7 @@ fun Canvas.drawSCCNode(i : Int, scale : Float, paint : Paint) {
     paint.strokeCap = Paint.Cap.ROUND
     save()
     translate(w / 2, gap * (i + 1))
+    drawRect(RectF(-size, -size, size, size), paint)
     for (j in 0..(lines - 1)) {
         save()
         rotate(90f * j - angleDeg * sc1.divideScale(j, lines))
@@ -226,7 +227,7 @@ class SquareCornerCrossView(ctx : Context) : View(ctx) {
         fun create(activity: Activity) : SquareCornerCrossView {
             val view : SquareCornerCrossView = SquareCornerCrossView(activity)
             activity.setContentView(view)
-            return view 
+            return view
         }
     }
 }
