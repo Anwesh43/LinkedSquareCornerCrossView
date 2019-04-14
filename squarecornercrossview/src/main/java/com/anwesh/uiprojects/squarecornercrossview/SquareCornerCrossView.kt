@@ -198,4 +198,25 @@ class SquareCornerCrossView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : SquareCornerCrossView) {
+
+        private val animator : Animator = Animator(view)
+        private val scc : SquareCornerCross = SquareCornerCross(0)
+
+        fun render(canvas : Canvas, paint : Paint) {
+            canvas.drawColor(backColor)
+            animator.animate {
+                scc.update {i, scl ->
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            scc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
