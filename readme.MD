@@ -8,4 +8,4 @@
 
 ### Demo
 
-<img src="https://github.com/Anwesh43/LinkedSquareCornerCrossView.git" width="300px" height="500px">
+<img src="https://github.com/Anwesh43/LinkedSquareCornerCrossView/blob/master/demo/squarecornercrossview.gif" width="300px" height="500px">
