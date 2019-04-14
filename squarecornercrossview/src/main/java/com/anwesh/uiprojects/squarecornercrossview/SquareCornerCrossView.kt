@@ -220,4 +220,13 @@ class SquareCornerCrossView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : SquareCornerCrossView {
+            val view : SquareCornerCrossView = SquareCornerCrossView(activity)
+            activity.setContentView(view)
+            return view 
+        }
+    }
 }
