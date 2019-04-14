@@ -40,7 +40,7 @@ fun Canvas.drawXYLine(size : Float, sc : Float, paint : Paint) {
     val lSize : Float = size / lSizeFactor
     val dSize : Float = size.distXY(size)
     save()
-    translate(0f, 0f.updateToD(dSize - lSize, sc))
+    translate(0f, 0f.updateToD(-(dSize - lSize), sc))
     drawLine(0f, 0f, 0f, -lSize, paint)
     restore()
 }
@@ -55,6 +55,7 @@ fun Canvas.drawSCCNode(i : Int, scale : Float, paint : Paint) {
     paint.color = foreColor
     paint.strokeWidth = Math.min(w, h) / strokeFactor
     paint.strokeCap = Paint.Cap.ROUND
+    paint.style = Paint.Style.STROKE
     save()
     translate(w / 2, gap * (i + 1))
     drawRect(RectF(-size, -size, size, size), paint)
@@ -208,6 +209,7 @@ class SquareCornerCrossView(ctx : Context) : View(ctx) {
 
         fun render(canvas : Canvas, paint : Paint) {
             canvas.drawColor(backColor)
+            scc.draw(canvas, paint)
             animator.animate {
                 scc.update {i, scl ->
                     animator.stop()
